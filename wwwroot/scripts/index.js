@@ -85,9 +85,11 @@ crossroads.addRoute('/:lang:', function () {
                 ('#/' + ExpensePage[ExpensePage.dashboard] === window.location.hash)) {
                 document.body.classList.remove('expense-page');
                 document.body.classList.remove('about-page');
-                window.dashboard();
-                document.querySelectorAll('.overview')[0].classList.add('expense-active-page');
-                document.body.classList.add('dashboard-page');
+                requestAnimationFrame(function () {
+                    window.dashboard();
+                    document.querySelectorAll('.overview')[0].classList.add('expense-active-page');
+                    document.body.classList.add('dashboard-page');
+                });
             } else if ((currentPage === ExpensePage[ExpensePage.expense]) ||
                 ('#/' + ExpensePage[ExpensePage.expense] === window.location.hash)) {
                 document.body.classList.remove('dashboard-page');
